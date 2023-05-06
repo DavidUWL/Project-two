@@ -31,13 +31,21 @@ header h2,h3 {
 .player-choice {
     display: flex;
     width: 100%;
-    font-size: 5.8vw;
+    
+    
 }
 
 .player-choice button {
     border:darkgray;
     border-style: ridge;
     border-width: 2px;
+    width: 5vw;
+    height: 15vh;
+    background-color: unset;
+}
+
+.player-choice button > i {
+    font-size: 75px;
 }
 
 #player-1 {

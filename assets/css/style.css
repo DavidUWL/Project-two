@@ -12,6 +12,11 @@ h1 {
     text-align: center;
 }
 
+header h2,h3 {
+    width: 100%;
+    text-align: center;
+}
+
 /* player div */
 .player {
     width: 30vw;
@@ -29,7 +34,7 @@ h1 {
     font-size: 5.8vw;
 }
 
-.player-choice p {
+.player-choice button {
     border:darkgray;
     border-style: ridge;
     border-width: 2px;

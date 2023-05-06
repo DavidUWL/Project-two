@@ -1,0 +1,47 @@
+/* remove borders/margin/padding */
+* {
+
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+/* header */
+h1 {
+    width: 100%;
+    text-align: center;
+}
+
+/* player div */
+.player {
+    width: 30vw;
+    height: 30vh;
+    border:darkgray;
+    border-style: ridge;
+    border-width: 2px;
+    display: inline-block;
+    margin: 40px;
+    
+}
+
+.player-choice {
+    display: flex;
+    width: 100%;
+    font-size: 5.8vw;
+}
+
+.player-choice p {
+    border:darkgray;
+    border-style: ridge;
+    border-width: 2px;
+}
+
+#player-1 {
+    float: left;
+
+}
+
+#player-2 {
+    float: right;
+
+}

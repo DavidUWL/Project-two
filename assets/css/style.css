@@ -44,6 +44,10 @@ header h2,h3 {
     background-color: unset;
 }
 
+.player-choice button:hover{
+    color:red;
+}
+
 .player-choice button > i {
     font-size: 75px;
 }

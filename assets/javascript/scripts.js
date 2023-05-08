@@ -12,8 +12,20 @@ let player2 = {
     choice: "";
 }
 
+// playerchoices
+let playerChoices = ["rock","paper","scissors","lizard","spock"]; 
+
+
 // timer
-function timerBegin(){
+// function timerBegin(){
+
+// }
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    let button = document.getElementsByTagName("button");
+
+    button.addEventListener("click", function() {
     let countdown = setInterval(function() {
         let timerElement = document.getElementById('timer');
         let currentTime = timerElement.innerHTML;
@@ -23,35 +35,34 @@ function timerBegin(){
             clearInterval(countdown)
         }
     }, 1000);
-}
-
-
-document.addEventListener("DOMContentLoaded", function() {
-    let button = document.getElementsByTagName("button");
+});
 
     for (let button of buttons) {
         button.addEventListener("click", function() {
-            if (this.getAttribute("value") === "rock1" || "paper1" || "scissors1" || "lizard1" || "spock1")
-            {
+            // if (this.getAttribute("value") === "rock1" || "paper1" || "scissors1" || "lizard1" || "spock1")
+            // {
                 let player1Choice = this.getAttribute("value");
                 switch(player1Choice) {
-                    case rock:
-                        this.getAttribute("value") = "rock1";
+                    case "rock1":
+                        p1Choice = "rock";
                         break;
-                    case scissors:
-                        this.getAttribute("value") = "scissors1";
+                    case "scissors1":
+                        p1Choice = "scissors";
                         break;
-                    case paper:
-                        this.getAttribute("value") = "paper1";
+                    case "paper1":
+                        p1Choice = "paper" ;
                         break
-                    case lizard:
-                        this.getxAttribute("value") = "lizard1";
+                    case "lizard1":
+                        p1Choice = "lizard";
                         break;
-                    case spock:
-                        this.getAttribute("value") = "spock1";
+                    case "spock1":
+                        p1Choice = "spock";
                         break;
                 };
-            };
+            document.getElementById("p1Choice").innerHTML = "Player 1 has chosen: " + p1Choice;
+            player1.choice = p1Choice;
+            console.log(p1choice);
+            // };
         });
     };
 })

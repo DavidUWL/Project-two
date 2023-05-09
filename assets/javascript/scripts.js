@@ -12,15 +12,15 @@ const player2 = {
     choice: "",
 }
 
-
-const disableButtonsP1 = function() {
-    let p1Buttons = document.getElementsByClassName("p1buttons");
+// buttons disabled functions
+const p1Buttons = document.getElementsByClassName("p1buttons");
+function p1ButtonDisabled() {
     p1Buttons.disabled = true;
-}
+};
 
 
-player1Choices = ["rock1","paper1","scissors1","lizard1","spock1"];
-player2Choices = ["rock2","paper2","scissors2","lizard2","spock2"];
+// player1Choices = ["rock1","paper1","scissors1","lizard1","spock1"];
+// player2Choices = ["rock2","paper2","scissors2","lizard2","spock2"];
 
 
 
@@ -62,15 +62,11 @@ document.addEventListener("DOMContentLoaded", function() {
                     case "spock1":
                         p1Choice = "spock";
                         break;
-                    case "":
-                        p1Choice = "nothing"
-                        break;
                 };
             document.getElementById("p1Choice").innerHTML = "Player 1 has chosen: " + p1Choice;
             player1.choice = p1Choice;
-            // console.log(p1choice);
-            };
-        }, disableButtonsP1);
+            };    
+        });
     };
 
     for (let button of buttons) {
@@ -99,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
             player2.choice = p2Choice;
             // console.log(p2choice);
             };
-        }, disableButtonsP2);
+        });
     };
 
 })

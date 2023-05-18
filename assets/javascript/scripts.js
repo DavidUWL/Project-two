@@ -101,6 +101,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     if (currentTime < 1) {
                         clearInterval(countdown);
                         disableButtons();
+                        winConditions();
                     };
                 }, 1000);
             });
@@ -112,9 +113,19 @@ document.addEventListener("DOMContentLoaded", function() {
         button.disabled = true;
         }
     };
+
+    function winConditions(player1choice,player2choice) {
+        let round = document.getElementById("round");
+        let winner = document.getElementById("winner");
+
+        if (player1choice === player2choice) {
+            winner.innerHTML = "DRAW";
+            round.innerHTML++;
+        };
+
+    };
 })
 
-console.log(player1.choice,player2.choice);
 
 
 

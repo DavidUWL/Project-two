@@ -12,12 +12,15 @@ const player2 = {
     choice: "",
 }
 
-// buttons disabled functions
+// lose conditions
 
-
-// player1Choices = ["rock1","paper1","scissors1","lizard1","spock1"];
-// player2Choices = ["rock2","paper2","scissors2","lizard2","spock2"];
-
+const loseConditions = {
+    rock:["paper", "spock"],
+    paper:["scissors", "lizard"],
+    scissors:["rock", "spock"],
+    lizard:["rock", "scissors"],
+    spock:["paper", "lizard"]
+}
 
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -114,18 +117,22 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
 
-    function winConditions(player1choice,player2choice) {
+    function winConditions() {
         let round = document.getElementById("round");
         let winner = document.getElementById("winner");
 
-        if (player1choice === player2choice) {
+        if (player1.choice === player2.choice) {
             winner.innerHTML = "DRAW";
             round.innerHTML++;
+        } else if (loseConditions[player1.choice].includes(player2.choice)) {
+            winner.innerHTML = "PLAYER 2 WINS";
+            round.innerHTML++;
+        } else {
+            winner.innerHTML = "PLAYER 1 WINS";
+            round.innerHTML++;  
         };
-
     };
 })
-
 
 
 

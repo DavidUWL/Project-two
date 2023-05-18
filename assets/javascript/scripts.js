@@ -91,24 +91,30 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function beginTimer() {
         for (let button of buttons) {
-            button.addEventListener("click", function BeginTimerCount () {
+            button.addEventListener("click", function beginTimerCount () {
                 let countdown = setInterval(function () {
+                    // buttons.removeEventListener("click", beginTimerCount);
                     let timerElement = document.getElementById('timer');
                     let currentTime = timerElement.innerHTML;
                     currentTime--;
                     timerElement.innerHTML = currentTime;
                     if (currentTime < 1) {
-                        button.removeEventListener("click", BeginTimerCount);
-                        buttons = document.getElementsByTagName("button");
-                        buttons.disabled = true;
                         clearInterval(countdown);
+                        disableButtons();
                     };
                 }, 1000);
             });
         };
     }
+
+    function disableButtons() {
+        for(let button of buttons){
+        button.disabled = true;
+        }
+    };
 })
 
+console.log(player1.choice,player2.choice);
 
 
 

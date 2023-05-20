@@ -129,30 +129,26 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function winConditions() {
         if (player1.choice === player2.choice) {
-            winner = "DRAW";
+            game.winner = "DRAW";
             game.roundCounter++;
 
         } else if (loseConditions[player1.choice].includes(player2.choice)) {
-            winner = "PLAYER 2 WINS";
+            game.winner = "PLAYER 2 WINS";
             game.roundCounter++;
             player2.score++;
             game.roundWinner.push(2);
 
         } else {
-            winner = "PLAYER 1 WINS";
+            game.winner = "PLAYER 1 WINS";
             player1.score++;
             game.roundCounter++;
             game.roundWinner.push(1);
         };
     };
 
-    // function playerRoundWinCounter() {
-        
-    // }
-
     function updateUI() {
-        document.getElementById("round").innerHTML = roundCounter;
-        document.getElementById("winner").innerHTML = winner;
+        document.getElementById("round").innerHTML = game.roundCounter;
+        document.getElementById("winner").innerHTML = game.winner;
         document.getElementById("p1Choice").innerHTML = "Player 1 has chosen: " + p1Choice;
         document.getElementById("p2Choice").innerHTML = "Player 2 has chosen: " + p2Choice;
     };

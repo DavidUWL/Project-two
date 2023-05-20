@@ -68,10 +68,16 @@ header h2,h3 {
     text-align: center;
     padding-top: 10px;
     font-size: 30px;
-    width: ;
-    
+    width: inherit;
 }
 
-#round-counter {
-    
+/* winner display */
+
+#winner {
+    text-align: center;
+    width: 250px;
+    height: 200px;
+    margin: 0 auto;
+    padding: 3%;
+    font-size: 40px;
 }

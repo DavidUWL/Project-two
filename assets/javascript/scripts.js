@@ -3,22 +3,23 @@
 const player1 = {
     name: "",
     score: 0,
-    roundWin:[],
     choice: "",
 };
 
 const player2 = {
     name: "",
     score: 0,
-    roundWin:[],
     choice: "",
 };
 
-// round
-var roundCounter = 1;
+//game object 
 
-// winner
-var winner = "";
+const game = {
+    roundCounter: 1,
+    winner: "",
+    roundWinner: [],
+};
+
 
 // lose conditions
 
@@ -69,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 };
             });
         };
-    }
+    };
 
     function player1ChoicePrint() {
         for (let button of buttons) {
@@ -98,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 };
             });
         };
-    }
+    };
 
     function beginTimer() {
         for (let button of buttons) {
@@ -118,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 }, 1000);
             });
         };
-    }
+    };
 
     function disableButtons() {
         for(let button of buttons){
@@ -129,19 +130,19 @@ document.addEventListener("DOMContentLoaded", function() {
     function winConditions() {
         if (player1.choice === player2.choice) {
             winner = "DRAW";
-            round++;
+            game.roundCounter++;
+
         } else if (loseConditions[player1.choice].includes(player2.choice)) {
             winner = "PLAYER 2 WINS";
-            round++;
+            game.roundCounter++;
             player2.score++;
-            player2.roundWin.push(2);
+            game.roundWinner.push(2);
 
         } else {
             winner = "PLAYER 1 WINS";
             player1.score++;
-            round++;
-            player1.roundWin.push(2);
-            player2.roundWin.push(1);
+            game.roundCounter++;
+            game.roundWinner.push(1);
         };
     };
 

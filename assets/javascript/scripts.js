@@ -3,12 +3,14 @@
 const player1 = {
     name: "",
     score: 0,
+    scoreCard:[],
     choice: "",
 };
 
 const player2 = {
     name: "",
     score: 0,
+    scoreCard:[],
     choice: "",
 };
 
@@ -131,6 +133,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (player1.choice === player2.choice) {
             game.winner = "DRAW";
             game.roundCounter++;
+            game.roundWinner.push(0);
 
         } else if (loseConditions[player1.choice].includes(player2.choice)) {
             game.winner = "PLAYER 2 WINS";
@@ -146,11 +149,28 @@ document.addEventListener("DOMContentLoaded", function() {
         };
     };
 
+    function getScoreCard(game.roundWinner) {
+        game.roundWinner.array.forEach(element => {
+            if (element === 1) {
+                player1.scoreCard.push("W");
+                player2.scoreCard.push("L");
+            } else if (element === 2) {
+                player2.scoreCard.push("W");
+                player1.scoreCard.push("L");
+            } else {
+                player2.scoreCard.push("D");
+                player1.scoreCard.push("D");
+            };
+        });
+    }
+
     function updateUI() {
         document.getElementById("round").innerHTML = game.roundCounter;
         document.getElementById("winner").innerHTML = game.winner;
         document.getElementById("p1Choice").innerHTML = "Player 1 has chosen: " + p1Choice;
         document.getElementById("p2Choice").innerHTML = "Player 2 has chosen: " + p2Choice;
+        document.getElementById("p1score").innerHTML = game.scoreCard.values();
+        document.getElementById("p2score").innerHTML = game.scoreCard.values();
     };
 })
 

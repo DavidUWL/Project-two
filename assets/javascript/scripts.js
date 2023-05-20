@@ -3,12 +3,14 @@
 const player1 = {
     name: "",
     score: 0,
+    roundWin:[0,0,0],
     choice: "",
 }
 
 const player2 = {
     name: "",
     score: 0,
+    roundWin:[0,0,0],
     choice: "",
 }
 
@@ -127,11 +129,17 @@ document.addEventListener("DOMContentLoaded", function() {
         } else if (loseConditions[player1.choice].includes(player2.choice)) {
             winner.innerHTML = "PLAYER 2 WINS";
             round.innerHTML++;
+            player2.score++;
         } else {
             winner.innerHTML = "PLAYER 1 WINS";
             round.innerHTML++;  
+            player1.score++;
         };
     };
+
+    function playerRoundWinCounter() {
+        
+    }
 })
 
 

@@ -3,16 +3,22 @@
 const player1 = {
     name: "",
     score: 0,
-    roundWin:[0,0,0],
+    roundWin:[],
     choice: "",
-}
+};
 
 const player2 = {
     name: "",
     score: 0,
-    roundWin:[0,0,0],
+    roundWin:[],
     choice: "",
-}
+};
+
+// round
+var roundCounter = 1;
+
+// winner
+var winner = "";
 
 // lose conditions
 
@@ -22,7 +28,7 @@ const loseConditions = {
     scissors:["rock", "spock"],
     lizard:["rock", "scissors"],
     spock:["paper", "lizard"]
-}
+};
 
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -57,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             p2Choice = "spock";
                             break;
                     };
-                    document.getElementById("p2Choice").innerHTML = "Player 2 has chosen: " + p2Choice;
+                    updateUI();
                     player2.choice = p2Choice;
                     // console.log(p2choice);
                 };
@@ -87,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             p1Choice = "spock";
                             break;
                     };
-                    document.getElementById("p1Choice").innerHTML = "Player 1 has chosen: " + p1Choice;
+                    updateUI();
                     player1.choice = p1Choice;
                 };
             });
@@ -107,6 +113,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         clearInterval(countdown);
                         disableButtons();
                         winConditions();
+                        updateUI();
                     };
                 }, 1000);
             });
@@ -120,26 +127,34 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 
     function winConditions() {
-        let round = document.getElementById("round");
-        let winner = document.getElementById("winner");
-
         if (player1.choice === player2.choice) {
-            winner.innerHTML = "DRAW";
-            round.innerHTML++;
+            winner = "DRAW";
+            round++;
         } else if (loseConditions[player1.choice].includes(player2.choice)) {
-            winner.innerHTML = "PLAYER 2 WINS";
-            round.innerHTML++;
+            winner = "PLAYER 2 WINS";
+            round++;
             player2.score++;
+            player2.roundWin.push(2);
+
         } else {
-            winner.innerHTML = "PLAYER 1 WINS";
-            round.innerHTML++;  
+            winner = "PLAYER 1 WINS";
             player1.score++;
+            round++;
+            player1.roundWin.push(2);
+            player2.roundWin.push(1);
         };
     };
 
-    function playerRoundWinCounter() {
+    // function playerRoundWinCounter() {
         
-    }
+    // }
+
+    function updateUI() {
+        document.getElementById("round").innerHTML = roundCounter;
+        document.getElementById("winner").innerHTML = winner;
+        document.getElementById("p1Choice").innerHTML = "Player 1 has chosen: " + p1Choice;
+        document.getElementById("p2Choice").innerHTML = "Player 2 has chosen: " + p2Choice;
+    };
 })
 
 

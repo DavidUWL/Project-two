@@ -26,6 +26,9 @@ const game = {
 let timerAllowed = true;
 let timerName;
 
+// buttons
+let buttonsAllowed = true;
+
 // lose conditions
 
 const loseConditions = {
@@ -129,11 +132,12 @@ document.addEventListener("DOMContentLoaded", function() {
         };
     };
 
-
     function disableButtons() {
-        for(let button of buttons){
-        button.disabled = true;
-        }
+        for(let button of buttons) {
+        if (buttonsAllowed) {
+            button.disabled = true;
+            } 
+        };
     };
 
     function winConditions() {

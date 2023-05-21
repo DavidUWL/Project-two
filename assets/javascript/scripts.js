@@ -133,12 +133,13 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 
     function disableButtons() {
-        for(let button of buttons) {
         if (buttonsAllowed) {
-            button.disabled = true;
-            } 
+            buttonsAllowed = false;
+            for (button of buttons) {
+                button.disabled = true;
+                };
+            };
         };
-    };
 
     function winConditions() {
         if (player1.choice === player2.choice) {

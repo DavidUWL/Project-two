@@ -43,6 +43,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     player2ChoicePrint();
 
+    winConditions();
+
+    getScoreCard();
+
+    updateUI();
+
 
     function player2ChoicePrint() {
         for (let button of buttons) {
@@ -115,8 +121,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     if (currentTime < 1) {
                         clearInterval(countdown);
                         disableButtons();
-                        winConditions();
-                        updateUI();
                     };
                 }, 1000);
             });
@@ -149,8 +153,8 @@ document.addEventListener("DOMContentLoaded", function() {
         };
     };
 
-    function getScoreCard(game.roundWinner) {
-        game.roundWinner.array.forEach(element => {
+    function getScoreCard() {
+        game.roundWinner.forEach(element => {
             if (element === 1) {
                 player1.scoreCard.push("W");
                 player2.scoreCard.push("L");
@@ -162,15 +166,15 @@ document.addEventListener("DOMContentLoaded", function() {
                 player1.scoreCard.push("D");
             };
         });
-    }
+    };
 
     function updateUI() {
         document.getElementById("round").innerHTML = game.roundCounter;
         document.getElementById("winner").innerHTML = game.winner;
         document.getElementById("p1Choice").innerHTML = "Player 1 has chosen: " + p1Choice;
         document.getElementById("p2Choice").innerHTML = "Player 2 has chosen: " + p2Choice;
-        document.getElementById("p1score").innerHTML = game.scoreCard.values();
-        document.getElementById("p2score").innerHTML = game.scoreCard.values();
+        document.getElementById("p1score").innerHTML = player1.scoreCard.join("");
+        document.getElementById("p2score").innerHTML = player2.scoreCard.join("");
     };
 })
 

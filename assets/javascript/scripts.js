@@ -22,6 +22,9 @@ const game = {
     roundWinner: [],
 };
 
+// timer 
+let timerAllowed = true;
+let timerName;
 
 // lose conditions
 
@@ -42,12 +45,6 @@ document.addEventListener("DOMContentLoaded", function() {
     player1ChoicePrint();
 
     player2ChoicePrint();
-
-    winConditions();
-
-    getScoreCard();
-
-    updateUI();
 
 
     function player2ChoicePrint() {
@@ -112,20 +109,26 @@ document.addEventListener("DOMContentLoaded", function() {
     function beginTimer() {
         for (let button of buttons) {
             button.addEventListener("click", function beginTimerCount () {
-                let countdown = setInterval(function () {
-                    // buttons.removeEventListener("click", beginTimerCount);
+                button.removeEventListener("click", beginTimerCount);
+                if (timerAllowed) {
+                    timerAllowed = false;
+                    let currentTime = 5;
+                    timerName = setInterval(function() {
                     let timerElement = document.getElementById('timer');
-                    let currentTime = timerElement.innerHTML;
-                    currentTime--;
-                    timerElement.innerHTML = currentTime;
-                    if (currentTime < 1) {
-                        clearInterval(countdown);
+                    timerElement.innerHTML = --currentTime;
+                    if (currentTime === 0) {
+                        clearInterval(timerName);
                         disableButtons();
+                        winConditions();
+                        getScoreCard();
+                        updateUI();
                     };
                 }, 1000);
+            };
             });
         };
     };
+
 
     function disableButtons() {
         for(let button of buttons){

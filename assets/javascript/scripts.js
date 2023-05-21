@@ -29,7 +29,7 @@ let timerName;
 // buttons
 let buttonsAllowed = true;
 nextRoundButtonAllowed = false;
-// document.getElementById("next-round").hidden = true;
+document.getElementById("next-round").hidden = true;
 document.getElementById("next-round").disabled = true;
 
 // lose conditions
@@ -128,6 +128,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         winConditions();
                         getScoreCard();
                         updateUI();
+                        enableNextRound();
                     };
                 }, 1000);
             };
@@ -192,7 +193,15 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("p2score").innerHTML = player2.scoreCard.join("");
     };
 
-    function nextRound() {
+    function enableNextRound() {
+        if (nextRoundButtonAllowed === false) {
+            nextRoundButtonAllowed = true;
+            document.getElementById("next-round").hidden = false;
+            document.getElementById("next-round").disabled = false;            
+        }
+    }
+
+    function newRound() {
         buttonsAllowed = true;
         toggleButtons();
         timerAllowed = true;

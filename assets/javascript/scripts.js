@@ -28,6 +28,9 @@ let timerName;
 
 // buttons
 let buttonsAllowed = true;
+nextRoundButtonAllowed = false;
+// document.getElementById("next-round").hidden = true;
+document.getElementById("next-round").disabled = true;
 
 // lose conditions
 
@@ -121,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     timerElement.innerHTML = --currentTime;
                     if (currentTime === 0) {
                         clearInterval(timerName);
-                        disableButtons();
+                        toggleButtons();
                         winConditions();
                         getScoreCard();
                         updateUI();
@@ -132,11 +135,15 @@ document.addEventListener("DOMContentLoaded", function() {
         };
     };
 
-    function disableButtons() {
+    function toggleButtons() {
         if (buttonsAllowed) {
             buttonsAllowed = false;
             for (button of buttons) {
                 button.disabled = true;
+                };
+            } else {
+                for (button of buttons) {
+                    button.disabled = false;
                 };
             };
         };
@@ -183,6 +190,15 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("p2Choice").innerHTML = "Player 2 has chosen: " + p2Choice;
         document.getElementById("p1score").innerHTML = player1.scoreCard.join("");
         document.getElementById("p2score").innerHTML = player2.scoreCard.join("");
+    };
+
+    function nextRound() {
+        buttonsAllowed = true;
+        toggleButtons();
+        timerAllowed = true;
+        game.winner = "";
+        document.getElementById("p1Choice").innerHTML = "";
+        document.getElementById("p2score").innerHTML = "";
     };
 })
 

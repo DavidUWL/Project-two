@@ -81,3 +81,14 @@ header h2,h3 {
     padding: 3%;
     font-size: 40px;
 }
+
+/* next round  */
+#next-round {
+    width: 250px;
+    height: 40px;
+    margin-left: 10%;
+    padding: 3%;
+    font-size: 25px;
+    border-style: double;
+    border-width: 1px;
+}

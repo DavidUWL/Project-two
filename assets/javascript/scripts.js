@@ -27,8 +27,9 @@ let timerAllowed = true;
 let timerName;
 
 // buttons
+let buttons = document.getElementsByTagName("button");
 let buttonsAllowed = true;
-nextRoundButtonAllowed = false;
+let nextRoundButtonAllowed = false;
 document.getElementById("next-round").hidden = true;
 document.getElementById("next-round").disabled = true;
 
@@ -44,172 +45,168 @@ const loseConditions = {
 
 
 document.addEventListener("DOMContentLoaded", function() {
-    let buttons = document.getElementsByTagName("button");
 
     beginTimer();   
 
     player1ChoicePrint();
 
     player2ChoicePrint();
+});
 
-
-    function player2ChoicePrint() {
-        for (let button of buttons) {
-            button.addEventListener("click", function () {
-                if (this.getAttribute("value") === "rock2" || "paper2" || "scissors2" || "lizard2" || "spock2") {
-                    let player2Choice = this.getAttribute("value");
-                    switch (player2Choice) {
-                        case "rock2":
-                            p2Choice = "rock";
-                            break;
-                        case "scissors2":
-                            p2Choice = "scissors";
-                            break;
-                        case "paper2":
-                            p2Choice = "paper";
-                            break;
-                        case "lizard2":
-                            p2Choice = "lizard";
-                            break;
-                        case "spock2":
-                            p2Choice = "spock";
-                            break;
-                    };
-                    updateUI();
-                    player2.choice = p2Choice;
-                    // console.log(p2choice);
+function player2ChoicePrint() {
+    for (let button of buttons) {
+        button.addEventListener("click", function () {
+            if (this.getAttribute("value") === "rock2" || "paper2" || "scissors2" || "lizard2" || "spock2") {
+                let player2Choice = this.getAttribute("value");
+                switch (player2Choice) {
+                    case "rock2":
+                        p2Choice = "rock";
+                        break;
+                    case "scissors2":
+                        p2Choice = "scissors";
+                        break;
+                    case "paper2":
+                        p2Choice = "paper";
+                        break;
+                    case "lizard2":
+                        p2Choice = "lizard";
+                        break;
+                    case "spock2":
+                        p2Choice = "spock";
+                        break;
                 };
-            });
-        };
-    };
-
-    function player1ChoicePrint() {
-        for (let button of buttons) {
-            button.addEventListener("click", function () {
-                if (this.getAttribute("value") === "rock1" || "paper1" || "scissors1" || "lizard1" || "spock1") {
-                    let player1Choice = this.getAttribute("value");
-                    switch (player1Choice) {
-                        case "rock1":
-                            p1Choice = "rock";
-                            break;
-                        case "scissors1":
-                            p1Choice = "scissors";
-                            break;
-                        case "paper1":
-                            p1Choice = "paper";
-                            break;
-                        case "lizard1":
-                            p1Choice = "lizard";
-                            break;
-                        case "spock1":
-                            p1Choice = "spock";
-                            break;
-                    };
-                    updateUI();
-                    player1.choice = p1Choice;
-                };
-            });
-        };
-    };
-
-    function beginTimer() {
-        for (let button of buttons) {
-            button.addEventListener("click", function beginTimerCount () {
-                button.removeEventListener("click", beginTimerCount);
-                if (timerAllowed) {
-                    timerAllowed = false;
-                    let currentTime = 5;
-                    timerName = setInterval(function() {
-                    let timerElement = document.getElementById('timer');
-                    timerElement.innerHTML = --currentTime;
-                    if (currentTime === 0) {
-                        clearInterval(timerName);
-                        toggleButtons();
-                        winConditions();
-                        getScoreCard();
-                        updateUI();
-                        enableNextRound();
-                    };
-                }, 1000);
-            };
-            });
-        };
-    };
-
-    function toggleButtons() {
-        if (buttonsAllowed) {
-            buttonsAllowed = false;
-            for (button of buttons) {
-                button.disabled = true;
-                };
-            } else {
-                for (button of buttons) {
-                    button.disabled = false;
-                };
-            };
-        };
-
-    function winConditions() {
-        if (player1.choice === player2.choice) {
-            game.winner = "DRAW";
-            game.roundCounter++;
-            game.roundWinner.push(0);
-
-        } else if (loseConditions[player1.choice].includes(player2.choice)) {
-            game.winner = "PLAYER 2 WINS";
-            game.roundCounter++;
-            player2.score++;
-            game.roundWinner.push(2);
-
-        } else {
-            game.winner = "PLAYER 1 WINS";
-            player1.score++;
-            game.roundCounter++;
-            game.roundWinner.push(1);
-        };
-    };
-
-    function getScoreCard() {
-        game.roundWinner.forEach(element => {
-            if (element === 1) {
-                player1.scoreCard.push("W");
-                player2.scoreCard.push("L");
-            } else if (element === 2) {
-                player2.scoreCard.push("W");
-                player1.scoreCard.push("L");
-            } else {
-                player2.scoreCard.push("D");
-                player1.scoreCard.push("D");
+                updateUI();
+                player2.choice = p2Choice;
+                // console.log(p2choice);
             };
         });
     };
+};
 
-    function updateUI() {
-        document.getElementById("round").innerHTML = game.roundCounter;
-        document.getElementById("winner").innerHTML = game.winner;
-        document.getElementById("p1Choice").innerHTML = "Player 1 has chosen: " + p1Choice;
-        document.getElementById("p2Choice").innerHTML = "Player 2 has chosen: " + p2Choice;
-        document.getElementById("p1score").innerHTML = player1.scoreCard.join("");
-        document.getElementById("p2score").innerHTML = player2.scoreCard.join("");
+function player1ChoicePrint() {
+    for (let button of buttons) {
+        button.addEventListener("click", function () {
+            if (this.getAttribute("value") === "rock1" || "paper1" || "scissors1" || "lizard1" || "spock1") {
+                let player1Choice = this.getAttribute("value");
+                switch (player1Choice) {
+                    case "rock1":
+                        p1Choice = "rock";
+                        break;
+                    case "scissors1":
+                        p1Choice = "scissors";
+                        break;
+                    case "paper1":
+                        p1Choice = "paper";
+                        break;
+                    case "lizard1":
+                        p1Choice = "lizard";
+                        break;
+                    case "spock1":
+                        p1Choice = "spock";
+                        break;
+                };
+                updateUI();
+                player1.choice = p1Choice;
+            };
+        });
     };
+};
 
-    function enableNextRound() {
-        if (nextRoundButtonAllowed === false) {
-            nextRoundButtonAllowed = true;
-            document.getElementById("next-round").hidden = false;
-            document.getElementById("next-round").disabled = false;            
-        }
-    }
-
-    function newRound() {
-        buttonsAllowed = true;
-        toggleButtons();
-        timerAllowed = true;
-        game.winner = "";
-        document.getElementById("p1Choice").innerHTML = "";
-        document.getElementById("p2score").innerHTML = "";
+function beginTimer() {
+    for (let button of buttons) {
+        button.addEventListener("click", function beginTimerCount () {
+            button.removeEventListener("click", beginTimerCount);
+            if (timerAllowed) {
+                timerAllowed = false;
+                let currentTime = 5;
+                // debugger
+                timerName = setInterval(function() {
+                let timerElement = document.getElementById('timer');
+                timerElement.innerHTML = --currentTime;
+                if (currentTime === 0) {
+                    clearInterval(timerName);
+                    toggleButtons();
+                    winConditions();
+                    getScoreCard();
+                    updateUI();
+                    toggleNextRound();
+                };
+            }, 1000);
+        };
+        });
     };
-})
+};
+
+function toggleButtons() {
+    for (button of buttons) button.disabled = buttonsAllowed;
+    buttonsAllowed = !(buttonsAllowed);
+};
+
+function winConditions() {
+    if (player1.choice === player2.choice) {
+        game.winner = "DRAW";
+        game.roundCounter++;
+        game.roundWinner.push(0);
+
+    } else if (loseConditions[player1.choice].includes(player2.choice)) {
+        game.winner = "PLAYER 2 WINS";
+        game.roundCounter++;
+        player2.score++;
+        game.roundWinner.push(2);
+
+    } else {
+        game.winner = "PLAYER 1 WINS";
+        player1.score++;
+        game.roundCounter++;
+        game.roundWinner.push(1);
+    };
+};
+
+function getScoreCard() {
+    game.roundWinner.forEach(element => {
+        if (element === 1) {
+            player1.scoreCard.push("W");
+            player2.scoreCard.push("L");
+        } else if (element === 2) {
+            player2.scoreCard.push("W");
+            player1.scoreCard.push("L");
+        } else {
+            player2.scoreCard.push("D");
+            player1.scoreCard.push("D");
+        };
+    });
+};
+
+function updateUI() {
+    document.getElementById("round").innerHTML = game.roundCounter;
+    document.getElementById("winner").innerHTML = game.winner;
+    document.getElementById("p1Choice").innerHTML = "Player 1 has chosen: " + p1Choice;
+    document.getElementById("p2Choice").innerHTML = "Player 2 has chosen: " + p2Choice;
+    document.getElementById("p1score").innerHTML = player1.scoreCard.join("");
+    document.getElementById("p2score").innerHTML = player2.scoreCard.join("");
+};
+
+function toggleNextRound() {
+    if (nextRoundButtonAllowed === false) {
+        nextRoundButtonAllowed = true;
+        document.getElementById("next-round").hidden = false;
+        document.getElementById("next-round").disabled = false;    
+        document.getElementById("next-round").addEventListener("click", newRound);        
+    } else {
+        nextRoundButtonAllowed = false;
+        document.getElementById("next-round").hidden = true;
+        document.getElementById("next-round").disabled = true;
+    };
+};
+
+function newRound() {
+    toggleButtons();
+    timerAllowed = true;
+    document.getElementById("p1Choice").innerHTML = "";
+    document.getElementById("p2Choice").innerHTML = "";
+    document.getElementById("winner").innerHTML = "";
+    toggleNextRound();
+};
 
 
 

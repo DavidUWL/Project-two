@@ -203,9 +203,13 @@ function newRound() {
     toggleButtons();
     timerAllowed = true;
     document.getElementById("p1Choice").innerHTML = "";
+    player1.choice = undefined;
     document.getElementById("p2Choice").innerHTML = "";
+    player2.choice = undefined;
     document.getElementById("winner").innerHTML = "";
+    game.winner = "";
     toggleNextRound();
+    
 };
 
 

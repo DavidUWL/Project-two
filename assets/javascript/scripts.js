@@ -3,14 +3,14 @@
 const player1 = {
     name: "",
     score: 0,
-    scoreCard:[],
+    scoreCard: [],
     choice: "",
 };
 
 const player2 = {
     name: "",
     score: 0,
-    scoreCard:[],
+    scoreCard: [],
     choice: "",
 };
 
@@ -37,17 +37,17 @@ document.getElementById("next-round").disabled = true;
 // lose conditions
 
 const loseConditions = {
-    rock:["paper", "spock"],
-    paper:["scissors", "lizard"],
-    scissors:["rock", "spock"],
-    lizard:["rock", "scissors"],
-    spock:["paper", "lizard"]
+    rock: ["paper", "spock"],
+    paper: ["scissors", "lizard"],
+    scissors: ["rock", "spock"],
+    lizard: ["rock", "scissors"],
+    spock: ["paper", "lizard"]
 };
 
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
 
-    beginTimer();   
+    beginTimer();
 
     player1ChoicePrint();
 
@@ -75,6 +75,10 @@ function player2ChoicePrint() {
                     case "spock2":
                         p2Choice = "spock";
                         break;
+                        default:
+                        p2Choice = "";
+                        break;
+                            
                 };
                 updatePlayerUIChoices();
                 player2.choice = p2Choice;
@@ -104,6 +108,9 @@ function player1ChoicePrint() {
                     case "spock1":
                         p1Choice = "spock";
                         break;
+                        default:
+                        p1Choice = "";
+                        break;
                 };
                 updatePlayerUIChoices();
                 player1.choice = p1Choice;
@@ -114,26 +121,28 @@ function player1ChoicePrint() {
 
 function beginTimer() {
     for (let button of buttons) {
-        button.addEventListener("click", function beginTimerCount () {
+        button.addEventListener("click", function beginTimerCount() {
             button.removeEventListener("click", beginTimerCount);
             if (timerAllowed) {
                 timerAllowed = false;
                 let currentTime = 5;
                 // debugger
-                timerName = setInterval(function() {
-                let timerElement = document.getElementById('timer');
-                timerElement.innerHTML = --currentTime;
-                if (currentTime === 0) {
-                    clearInterval(timerName);
-                    toggleButtons();
-                    winConditions();
-                    getScoreCard();
-                    updateScoreUI();
-                    bestOfThreeCalc();
-                    toggleNextRound();
-                };
-            }, 1000);
-        };
+                timerName = setInterval(function () {
+                    let timerElement = document.getElementById('timer');
+                    timerElement.innerHTML = --currentTime;
+                    if (currentTime === 0) {
+                        clearInterval(timerName);
+                        toggleButtons();
+                        // console.log(player2.choice);
+                        playAgainstAI();
+                        winConditions();
+                        getScoreCard();
+                        updateScoreUI();
+                        bestOfThreeCalc();
+                        toggleNextRound();
+                    };
+                }, 1000);
+            };
         });
     };
 };
@@ -161,7 +170,7 @@ function winConditions() {
         game.roundCounter++;
         game.roundWinner.push(1);
     };
-    
+
 
 };
 
@@ -181,8 +190,8 @@ function getScoreCard() {
 };
 
 function updatePlayerUIChoices() {
-    document.getElementById("p1Choice").innerHTML = "Player 1 has chosen: " + p1Choice;
-    document.getElementById("p2Choice").innerHTML = "Player 2 has chosen: " + p2Choice;
+    document.getElementById("p1Choice").innerHTML = "Player 1 has chosen: " + player1.choice;
+    document.getElementById("p2Choice").innerHTML = "Player 2 has chosen: " + player2.choice;
 };
 
 function updateScoreUI() {
@@ -197,8 +206,8 @@ function toggleNextRound() {
     if (nextRoundButtonAllowed === false) {
         nextRoundButtonAllowed = true;
         document.getElementById("next-round").hidden = false;
-        document.getElementById("next-round").disabled = false;    
-        document.getElementById("next-round").addEventListener("click", newRound);        
+        document.getElementById("next-round").disabled = false;
+        document.getElementById("next-round").addEventListener("click", newRound);
     } else {
         nextRoundButtonAllowed = false;
         document.getElementById("next-round").hidden = true;
@@ -236,9 +245,30 @@ function bestOfThreeCalc() {
     };
 };
 
+function playAgainstAI() {
+    if (!player2.choice) {
+        let aiChoice = Math.floor(Math.random() * 4)
 
-
-
+        switch (aiChoice) {
+            case 0:
+                player2.choice = "rock";
+            break;
+            case 1:
+                player2.choice = "paper";
+            break;
+            case 2:
+                player2.choice = "scissors";
+            break;
+            case 3:
+                player2.choice = "lizard";
+            break;
+            case 4:
+                player2.choice = "spock";
+            break
+        };
+    };
+    updatePlayerUIChoices();
+};
 
 
 

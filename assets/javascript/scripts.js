@@ -75,9 +75,8 @@ function player2ChoicePrint() {
                         p2Choice = "spock";
                         break;
                 };
-                updateUI();
+                updatePlayerUIChoices();
                 player2.choice = p2Choice;
-                // console.log(p2choice);
             };
         });
     };
@@ -105,7 +104,7 @@ function player1ChoicePrint() {
                         p1Choice = "spock";
                         break;
                 };
-                updateUI();
+                updatePlayerUIChoices();
                 player1.choice = p1Choice;
             };
         });
@@ -128,7 +127,7 @@ function beginTimer() {
                     toggleButtons();
                     winConditions();
                     getScoreCard();
-                    updateUI();
+                    updateScoreUI();
                     toggleNextRound();
                 };
             }, 1000);
@@ -160,6 +159,8 @@ function winConditions() {
         game.roundCounter++;
         game.roundWinner.push(1);
     };
+    
+
 };
 
 function getScoreCard() {
@@ -175,13 +176,17 @@ function getScoreCard() {
             player1.scoreCard.push("D");
         };
     });
+    // console.log(player1.scoreCard,player2.scoreCard);
 };
 
-function updateUI() {
-    document.getElementById("round").innerHTML = game.roundCounter;
-    document.getElementById("winner").innerHTML = game.winner;
+function updatePlayerUIChoices() {
     document.getElementById("p1Choice").innerHTML = "Player 1 has chosen: " + p1Choice;
     document.getElementById("p2Choice").innerHTML = "Player 2 has chosen: " + p2Choice;
+};
+
+function updateScoreUI() {
+    document.getElementById("round").innerHTML = game.roundCounter;
+    document.getElementById("winner").innerHTML = game.winner;
     document.getElementById("p1score").innerHTML = player1.scoreCard.join("");
     document.getElementById("p2score").innerHTML = player2.scoreCard.join("");
 };
@@ -209,6 +214,8 @@ function newRound() {
     document.getElementById("winner").innerHTML = "";
     game.winner = "";
     toggleNextRound();
+    player1.scoreCard = [];
+    player2.scoreCard = [];
     
 };
 

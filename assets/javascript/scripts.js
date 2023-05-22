@@ -15,11 +15,12 @@ const player2 = {
 };
 
 //game object 
-
+document.getElementById("best-of-three-winner").hidden = true;
 const game = {
     roundCounter: 1,
     winner: "",
     roundWinner: [],
+    bestOfThreeWinner: "",
 };
 
 // timer 
@@ -128,6 +129,7 @@ function beginTimer() {
                     winConditions();
                     getScoreCard();
                     updateScoreUI();
+                    bestOfThreeCalc();
                     toggleNextRound();
                 };
             }, 1000);
@@ -176,7 +178,6 @@ function getScoreCard() {
             player1.scoreCard.push("D");
         };
     });
-    // console.log(player1.scoreCard,player2.scoreCard);
 };
 
 function updatePlayerUIChoices() {
@@ -189,6 +190,7 @@ function updateScoreUI() {
     document.getElementById("winner").innerHTML = game.winner;
     document.getElementById("p1score").innerHTML = player1.scoreCard.join("");
     document.getElementById("p2score").innerHTML = player2.scoreCard.join("");
+    document.getElementById("best-of-three-winner").innerHTML = game.bestOfThreeWinner;
 };
 
 function toggleNextRound() {
@@ -216,9 +218,23 @@ function newRound() {
     toggleNextRound();
     player1.scoreCard = [];
     player2.scoreCard = [];
-    
 };
 
+function bestOfThreeCalc() {
+    if (game.roundCounter === 4) {
+        document.getElementById("best-of-three-winner").hidden = false;
+
+        if (player1.score === player2.score) {
+            game.bestOfThreeWinner = "BEST OF THREE WINNER: DRAW!";
+        } else if (player1.score > player2.score) {
+            game.bestOfThreeWinner = "BEST OF THREE WINNER: PLAYER 1!"
+        } else {
+            game.bestOfThreeWinner = "BEST OF THREE WINNER: PLAYER 2!"
+        };
+        updateScoreUI()
+        console.log(game.bestOfThreeWinner);
+    };
+};
 
 
 

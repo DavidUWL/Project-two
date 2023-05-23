@@ -59,10 +59,14 @@ function promptPlayerName() {
     console.log(player1.name);
     if (player1.name) {
         document.getElementById("p1name").innerHTML = player1.name;
+    } else {
+        player1.name = "Player 1";
     }
     player2.name = prompt("player 2 Name:")
     if (player2.name) {
         document.getElementById("p2name").innerHTML = player2.name;
+    } else {
+        player2.name = "Player 2";
     }
 }
 
@@ -157,15 +161,15 @@ function getScoreCard() {
 
 function updatePlayerUIChoices() {
     if (player1.choice) {
-        document.getElementById("p1Choice").innerHTML = "Player 1 has chosen: " + player1.choice;
+        document.getElementById("p1Choice").innerHTML =`${player1.name} has chosen: ` + player1.choice;
     } else {
-        document.getElementById("p1Choice").innerHTML = "This Player has not chosen."
+        document.getElementById("p1Choice").innerHTML = `${player1.name} has not chosen yet.`
     };
 
     if (player2.choice) {
-        document.getElementById("p2Choice").innerHTML = "Player 2 has chosen: " + player2.choice;
+        document.getElementById("p2Choice").innerHTML = `${player2.name} has chosen: ` + player2.choice;
     } else {
-        document.getElementById("p2Choice").innerHTML = "This Player has not chosen." 
+        document.getElementById("p2Choice").innerHTML = `${player2.name} has not chosen yet.`
     }
 };
 

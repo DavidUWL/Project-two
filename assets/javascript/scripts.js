@@ -1,14 +1,14 @@
 // players
 
 const player1 = {
-    name: "",
+    name: "Player 1",
     score: 0,
     scoreCard: [],
     choice: "",
 };
 
 const player2 = {
-    name: "",
+    name: "Player 2",
     score: 0,
     scoreCard: [],
     choice: "",
@@ -55,18 +55,19 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function promptPlayerName() {
-    player1.name = prompt("player 1 Name:");
-    console.log(player1.name);
-    if (player1.name) {
+    player1.name = window.prompt("player 1 Name:");
+    if (player1.name != "Player 1") {
         document.getElementById("p1name").innerHTML = player1.name;
     } else {
         player1.name = "Player 1";
     }
-    player2.name = prompt("player 2 Name:")
-    if (player2.name) {
+
+    player2.name = window.prompt("player 2 Name:")
+    if (player2.name != "Player 2") {
         document.getElementById("p2name").innerHTML = player2.name;
-    } else {
-        player2.name = "Player 2";
+    }
+    else {
+    player2.name = "player 2";
     }
 }
 
@@ -129,13 +130,13 @@ function winConditions() {
         game.roundWinner.push(0);
 
     } else if (loseConditions[player1.choice].includes(player2.choice)) {
-        game.winner = "PLAYER 2 WINS";
+        game.winner = `${player2.name} wins!`;
         game.roundCounter++;
         player2.score++;
         game.roundWinner.push(2);
 
     } else {
-        game.winner = "PLAYER 1 WINS";
+        game.winner = `${player1.name} wins!`;
         player1.score++;
         game.roundCounter++;
         game.roundWinner.push(1);

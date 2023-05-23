@@ -47,12 +47,24 @@ const loseConditions = {
 
 document.addEventListener("DOMContentLoaded", function () {
 
+    promptPlayerName();
+
     beginTimer();
 
     logPlayerChoice();
 });
 
-
+function promptPlayerName() {
+    player1.name = prompt("player 1 Name:");
+    console.log(player1.name);
+    if (player1.name) {
+        document.getElementById("p1name").innerHTML = player1.name;
+    }
+    player2.name = prompt("player 2 Name:")
+    if (player2.name) {
+        document.getElementById("p2name").innerHTML = player2.name;
+    }
+}
 
 function logPlayerChoice() {
   for (let button of buttons) {

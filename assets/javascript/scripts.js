@@ -56,14 +56,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function promptPlayerName() {
     player1.name = window.prompt("player 1 Name:");
-    if (player1.name != "Player 1") {
+    if (player1.name != "Player 1" || undefined) {
         document.getElementById("p1name").innerHTML = player1.name;
     } else {
         player1.name = "Player 1";
     }
 
     player2.name = window.prompt("player 2 Name:")
-    if (player2.name != "Player 2") {
+    if (player2.name != "Player 2" || undefined) {
         document.getElementById("p2name").innerHTML = player2.name;
     }
     else {
@@ -226,8 +226,13 @@ function bestOfThreeCalc() {
 };
 
 function playAgainstAI() {
-    if (!player2.choice) {
-        let aiChoice = Math.floor(Math.random() * 4)
+    if (player2.name.toLocaleLowerCase() === "computer") {
+        let aiButtons = document.getElementsByClassName("p2button");
+        for (let button of aiButtons) {
+            button.disabled = true;
+        }
+
+        let aiChoice = Math.floor(Math.random() * 5);
 
         switch (aiChoice) {
             case 0:

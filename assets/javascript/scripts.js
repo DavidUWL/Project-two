@@ -77,12 +77,10 @@ function logPlayerChoice() {
       if (this.classList.contains("p1button")) {
         let p1Choice = this.getAttribute("value");
         player1.choice = p1Choice;
-        // console.log(player1.choice);
         updatePlayerUIChoices();
       } else {
         let p2Choice = this.getAttribute("value");
         player2.choice = p2Choice;
-        // console.log(player2.choice);
         updatePlayerUIChoices();
       };
     });
@@ -91,20 +89,18 @@ function logPlayerChoice() {
 };
 
 function beginTimer() {
+    disableButtonsP2AI();
     for (let button of buttons) {
         button.addEventListener("click", function beginTimerCount() {
-            // button.removeEventListener("click", beginTimerCount);
             if (timerAllowed) {
                 timerAllowed = false;
                 let currentTime = 5;
-                // debugger
                 timerName = setInterval(function () {
                     let timerElement = document.getElementById('timer');
                     timerElement.innerHTML = --currentTime;
                     if (currentTime === 0) {
                         clearInterval(timerName);
                         toggleButtons();
-                        // console.log(player2.choice);
                         playAgainstAI();
                         winConditions();
                         getScoreCard();
@@ -148,11 +144,11 @@ function winConditions() {
 function getScoreCard() {
     game.roundWinner.forEach(element => {
         if (element === 1) {
-            player1.scoreCard.push("W");
-            player2.scoreCard.push("L");
+            player1.scoreCard.push("✓");
+            player2.scoreCard.push("X");
         } else if (element === 2) {
-            player2.scoreCard.push("W");
-            player1.scoreCard.push("L");
+            player2.scoreCard.push("✓");
+            player1.scoreCard.push("X");
         } else {
             player2.scoreCard.push("D");
             player1.scoreCard.push("D");
@@ -220,20 +216,21 @@ function bestOfThreeCalc() {
         } else {
             game.bestOfThreeWinner = "BEST OF THREE WINNER: PLAYER 2!"
         };
-        updateScoreUI()
-        console.log(game.bestOfThreeWinner);
+        updateScoreUI();
     };
 };
 
-function playAgainstAI() {
+function disableButtonsP2AI() {
     if (player2.name.toLocaleLowerCase() === "computer") {
         let aiButtons = document.getElementsByClassName("p2button");
         for (let button of aiButtons) {
             button.disabled = true;
-        }
+        };
+    };
+};
 
-        let aiChoice = Math.floor(Math.random() * 5);
-
+function playAgainstAI() {
+    let aiChoice = Math.floor(Math.random() * 5);
         switch (aiChoice) {
             case 0:
                 player2.choice = "rock";
@@ -251,9 +248,9 @@ function playAgainstAI() {
                 player2.choice = "spock";
             break
         };
+        updatePlayerUIChoices();
     };
-    updatePlayerUIChoices();
-};
+
 
 
 

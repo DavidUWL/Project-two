@@ -1,14 +1,14 @@
 // players
 
 const player1 = {
-    name: "",
+    name: "Player 1",
     score: 0,
     scoreCard: [],
     choice: "",
 };
 
 const player2 = {
-    name: "",
+    name: "Player 2",
     score: 0,
     scoreCard: [],
     choice: "",
@@ -47,93 +47,60 @@ const loseConditions = {
 
 document.addEventListener("DOMContentLoaded", function () {
 
+    promptPlayerName();
+
     beginTimer();
 
-    player1ChoicePrint();
-
-    player2ChoicePrint();
+    logPlayerChoice();
 });
 
-function player2ChoicePrint() {
-    for (let button of buttons) {
-        button.addEventListener("click", function () {
-            if (this.getAttribute("value") === "rock2" || "paper2" || "scissors2" || "lizard2" || "spock2") {
-                let player2Choice = this.getAttribute("value");
-                switch (player2Choice) {
-                    case "rock2":
-                        p2Choice = "rock";
-                        break;
-                    case "scissors2":
-                        p2Choice = "scissors";
-                        break;
-                    case "paper2":
-                        p2Choice = "paper";
-                        break;
-                    case "lizard2":
-                        p2Choice = "lizard";
-                        break;
-                    case "spock2":
-                        p2Choice = "spock";
-                        break;
-                        default:
-                        p2Choice = "";
-                        break;
-                            
-                };
-                updatePlayerUIChoices();
-                player2.choice = p2Choice;
-            };
-        });
-    };
-};
+function promptPlayerName() {
+    player1.name = window.prompt("player 1 Name:");
+    if (player1.name != "Player 1" || undefined) {
+        document.getElementById("p1name").innerHTML = player1.name;
+    } else {
+        player1.name = "Player 1";
+    }
 
-function player1ChoicePrint() {
-    for (let button of buttons) {
-        button.addEventListener("click", function () {
-            if (this.getAttribute("value") === "rock1" || "paper1" || "scissors1" || "lizard1" || "spock1") {
-                let player1Choice = this.getAttribute("value");
-                switch (player1Choice) {
-                    case "rock1":
-                        p1Choice = "rock";
-                        break;
-                    case "scissors1":
-                        p1Choice = "scissors";
-                        break;
-                    case "paper1":
-                        p1Choice = "paper";
-                        break;
-                    case "lizard1":
-                        p1Choice = "lizard";
-                        break;
-                    case "spock1":
-                        p1Choice = "spock";
-                        break;
-                        default:
-                        p1Choice = "";
-                        break;
-                };
-                updatePlayerUIChoices();
-                player1.choice = p1Choice;
-            };
-        });
-    };
+    player2.name = window.prompt("player 2 Name:")
+    if (player2.name != "Player 2" || undefined) {
+        document.getElementById("p2name").innerHTML = player2.name;
+    }
+    else {
+    player2.name = "player 2";
+    }
+}
+
+function logPlayerChoice() {
+  for (let button of buttons) {
+    button.addEventListener("click", function() {
+      if (this.classList.contains("p1button")) {
+        let p1Choice = this.getAttribute("value");
+        player1.choice = p1Choice;
+        updatePlayerUIChoices();
+      } else {
+        let p2Choice = this.getAttribute("value");
+        player2.choice = p2Choice;
+        updatePlayerUIChoices();
+      };
+    });
+
+  };
 };
 
 function beginTimer() {
+    disableButtonsP2AI();
     for (let button of buttons) {
         button.addEventListener("click", function beginTimerCount() {
-            button.removeEventListener("click", beginTimerCount);
             if (timerAllowed) {
                 timerAllowed = false;
                 let currentTime = 5;
-                // debugger
                 timerName = setInterval(function () {
                     let timerElement = document.getElementById('timer');
                     timerElement.innerHTML = --currentTime;
                     if (currentTime === 0) {
                         clearInterval(timerName);
                         toggleButtons();
-                        // console.log(player2.choice);
                         playAgainstAI();
                         winConditions();
                         getScoreCard();
@@ -159,13 +126,13 @@ function winConditions() {
         game.roundWinner.push(0);
 
     } else if (loseConditions[player1.choice].includes(player2.choice)) {
-        game.winner = "PLAYER 2 WINS";
+        game.winner = `${player2.name} wins!`;
         game.roundCounter++;
         player2.score++;
         game.roundWinner.push(2);
 
     } else {
-        game.winner = "PLAYER 1 WINS";
+        game.winner = `${player1.name} wins!`;
         player1.score++;
         game.roundCounter++;
         game.roundWinner.push(1);
@@ -177,11 +144,11 @@ function winConditions() {
 function getScoreCard() {
     game.roundWinner.forEach(element => {
         if (element === 1) {
-            player1.scoreCard.push("W");
-            player2.scoreCard.push("L");
+            player1.scoreCard.push("✓");
+            player2.scoreCard.push("X");
         } else if (element === 2) {
-            player2.scoreCard.push("W");
-            player1.scoreCard.push("L");
+            player2.scoreCard.push("✓");
+            player1.scoreCard.push("X");
         } else {
             player2.scoreCard.push("D");
             player1.scoreCard.push("D");
@@ -190,8 +157,17 @@ function getScoreCard() {
 };
 
 function updatePlayerUIChoices() {
-    document.getElementById("p1Choice").innerHTML = "Player 1 has chosen: " + player1.choice;
-    document.getElementById("p2Choice").innerHTML = "Player 2 has chosen: " + player2.choice;
+    if (player1.choice) {
+        document.getElementById("p1Choice").innerHTML =`${player1.name} has chosen: ` + player1.choice;
+    } else {
+        document.getElementById("p1Choice").innerHTML = `${player1.name} has not chosen yet.`
+    };
+
+    if (player2.choice) {
+        document.getElementById("p2Choice").innerHTML = `${player2.name} has chosen: ` + player2.choice;
+    } else {
+        document.getElementById("p2Choice").innerHTML = `${player2.name} has not chosen yet.`
+    }
 };
 
 function updateScoreUI() {
@@ -240,15 +216,21 @@ function bestOfThreeCalc() {
         } else {
             game.bestOfThreeWinner = "BEST OF THREE WINNER: PLAYER 2!"
         };
-        updateScoreUI()
-        console.log(game.bestOfThreeWinner);
+        updateScoreUI();
+    };
+};
+
+function disableButtonsP2AI() {
+    if (player2.name.toLocaleLowerCase() === "computer") {
+        let aiButtons = document.getElementsByClassName("p2button");
+        for (let button of aiButtons) {
+            button.disabled = true;
+        };
     };
 };
 
 function playAgainstAI() {
-    if (!player2.choice) {
-        let aiChoice = Math.floor(Math.random() * 4)
-
+    let aiChoice = Math.floor(Math.random() * 5);
         switch (aiChoice) {
             case 0:
                 player2.choice = "rock";
@@ -266,9 +248,9 @@ function playAgainstAI() {
                 player2.choice = "spock";
             break
         };
+        updatePlayerUIChoices();
     };
-    updatePlayerUIChoices();
-};
+
 
 
 

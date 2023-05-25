@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +8,17 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Home-page</title>
 </head>
+
 <body>
     <section>
         <img src="./assets/images/rock-paper-scissors-lizard-spock.png" alt="rules of rock paper scissors lizard spock">
-        <input type="button" location.href="rpsls.html'" value="ENTER">
+        <div id="buttons-div">
+            <input type="button" onclick="location.href='rpsls.html'" value="PLAY" class="splash-buttons" id="play">
+            <input type="button" onclick="location.href='rules.html'" value="RULES" class="splash-buttons" id="rules">
+        </div>
 
     </section>
-    
+
 </body>
+
 </html>

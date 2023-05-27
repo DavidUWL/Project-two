@@ -131,6 +131,11 @@ header h2,h3 {
     transition: 150ms ease;
 }
 
+.player-choice button:active {
+    box-shadow: 1px 1px 2px #ffffff;
+    transition: 100ms ease;
+}
+
 .player-choice button > i {
     font-size: 4vw;
 }

@@ -205,9 +205,26 @@ function newRound() {
     player2.scoreCard = [];
 };
 
+function reset() {
+    if (game.roundCounter === 4) {
+        game.roundCounter = 1;
+        document.getElementById("round").innerHTML = game.roundCounter;
+        player1.score = 0;
+        player2.score = 0;
+        player1.scoreCard = [];
+        player2.scoreCard = [];
+        console.log(player1.scoreCard);
+        document.getElementById("best-of-three-winner").hidden = true;
+        document.getElementById("next-round").innerHTML = "NEXT-ROUND"
+    }
+};
+
 function bestOfThreeCalc() {
     if (game.roundCounter === 4) {
         document.getElementById("best-of-three-winner").hidden = false;
+        document.getElementById("next-round").innerHTML = "RESET";
+        document.getElementById("next-round").removeEventListener("click", newRound);
+        document.getElementById("next-round").addEventListener("click", reset);
 
         if (player1.score === player2.score) {
             game.bestOfThreeWinner = "BEST OF THREE WINNER: DRAW!";
@@ -217,6 +234,7 @@ function bestOfThreeCalc() {
             game.bestOfThreeWinner = "BEST OF THREE WINNER: PLAYER 2!"
         };
         updateScoreUI();
+        updatePlayerUIChoices();
     };
 };
 
@@ -251,22 +269,3 @@ function playAgainstAI() {
         updatePlayerUIChoices();
     };
 
-
-
-
-
-
-
-// dynamic font refactor
-// const myDiv = document.getElementById("myDiv");
-
-// function adjustFontSize() {
-//   const divWidth = myDiv.offsetWidth;
-//   const fontSize = divWidth / 10; // Adjust the factor to your preference
-//   myDiv.style.fontSize = `${fontSize}px`;
-// }
-
-
-// fontRefactor();
-// window.addEventListener("resize", fontRefactor);
-// })

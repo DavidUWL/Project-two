@@ -213,9 +213,10 @@ function reset() {
         player2.score = 0;
         player1.scoreCard = [];
         player2.scoreCard = [];
-        console.log(player1.scoreCard);
         document.getElementById("best-of-three-winner").hidden = true;
-        document.getElementById("next-round").innerHTML = "NEXT-ROUND"
+        document.getElementById("next-round").innerHTML = "NEXT-ROUND";
+        game.roundWinner = [];
+        updateScoreUI();
     }
 };
 

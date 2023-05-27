@@ -71,11 +71,16 @@ img {
     transition: 100ms ease;
 }
 
+/* GAME */
+body {
+    background-color: #15133c;
+    color:#73d9cf;
+}
 /* header */
-/* h1 {
+#game-title {
     width: 100%;
     text-align: center;
-} */
+}
 
 header h2,h3 {
     width: 100%;
@@ -83,6 +88,15 @@ header h2,h3 {
 }
 
 /* player div */
+.player h2 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.player-score {
+    font-size: 2vw;
+    transition: 200ms ease-in;
+}
+
 .player {
     width: 30vw;
     height: 30vh;
@@ -91,6 +105,7 @@ header h2,h3 {
     border-width: 2px;
     display: inline-block;
     margin: 40px;
+    /* background-color: #81b6c0; */
 }
 
 .player-choice {
@@ -107,14 +122,17 @@ header h2,h3 {
     width: 5vw;
     height: 15vh;
     background-color: unset;
+    color:#73d9cf;
 }
 
 .player-choice button:hover{
-    color:red;
+    color: #73d9cf;
+    background-image: linear-gradient( #272269,#252285);
+    transition: 150ms ease;
 }
 
 .player-choice button > i {
-    font-size: 75px;
+    font-size: 4vw;
 }
 
 #player-1 {
@@ -155,11 +173,25 @@ header h2,h3 {
     font-size: 25px;
     border-style: double;
     border-width: 1px;
+    background-color: inherit;
+    color: inherit;
+}
+
+#next-round:hover {
+    color: #73d9cf;
+    background-image: linear-gradient( #1a1748,#1d1a66);
+    transition: 150ms ease;
+
+}
+
+#next-round:active {
+    box-shadow: 1px 1px 2px #ffffff;
+    transition: 100ms ease;
 }
 
 /* best of three winner  */
 #best-of-three-winner {
-    text-align: left;
+    text-align: center;
     font-size: 25px;
     margin: 0 auto;
     width: 40vw;
@@ -168,4 +200,5 @@ header h2,h3 {
     border-width: 1px;
     margin-top: 30px;
     padding: 1%;
+    background-image: linear-gradient( #1a1748,#1d1a66);
 }

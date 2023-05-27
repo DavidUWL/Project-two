@@ -150,8 +150,8 @@ function getScoreCard() {
             player2.scoreCard.push("✓");
             player1.scoreCard.push("X");
         } else {
-            player2.scoreCard.push("D");
-            player1.scoreCard.push("D");
+            player2.scoreCard.push("~");
+            player1.scoreCard.push("~");
         };
     });
 };

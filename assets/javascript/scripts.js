@@ -63,7 +63,7 @@ function promptPlayerName() {
         player1.name = "Player 1";
     }
 
-    player2.name = window.prompt("player 2 Name:")
+    player2.name = window.prompt("player 2 Name:");
     if (player2.name != "Player 2" || undefined) {
         player2.name = player2.name.trim();
         document.getElementById("p2name").innerHTML = player2.name;
@@ -84,11 +84,11 @@ function logPlayerChoice() {
         let p2Choice = this.getAttribute("value");
         player2.choice = p2Choice;
         updatePlayerUIChoices();
-      };
+      }
     });
 
-  };
-};
+  }
+}
 
 function beginTimer() {
     disableButtonsP2AI();
@@ -109,17 +109,17 @@ function beginTimer() {
                         updateScoreUI();
                         bestOfThreeCalc();
                         toggleNextRound();
-                    };
+                    }
                 }, 1000);
-            };
+            }
         });
-    };
-};
+    }
+}
 
 function toggleButtons() {
-    for (button of buttons) button.disabled = buttonsAllowed;
+    for (let button of buttons) button.disabled = buttonsAllowed;
     buttonsAllowed = !(buttonsAllowed);
-};
+}
 
 function winConditions() {
     if (player1.choice === player2.choice) {
@@ -138,10 +138,8 @@ function winConditions() {
         player1.score++;
         game.roundCounter++;
         game.roundWinner.push(1);
-    };
-
-
-};
+    }
+}
 
 function getScoreCard() {
     game.roundWinner.forEach(element => {
@@ -154,23 +152,23 @@ function getScoreCard() {
         } else {
             player2.scoreCard.push("~");
             player1.scoreCard.push("~");
-        };
+        }
     });
-};
+}
 
 function updatePlayerUIChoices() {
     if (player1.choice) {
-        document.getElementById("p1Choice").innerHTML =`${player1.name} has chosen: ` + player1.choice;
+        document.getElementById("p1choice").innerHTML =`${player1.name} has chosen: ` + player1.choice;
     } else {
-        document.getElementById("p1Choice").innerHTML = `${player1.name} has not chosen yet.`
-    };
+        document.getElementById("p1choice").innerHTML = `${player1.name} has not chosen yet.`;
+    }
 
     if (player2.choice) {
-        document.getElementById("p2Choice").innerHTML = `${player2.name} has chosen: ` + player2.choice;
+        document.getElementById("p2choice").innerHTML = `${player2.name} has chosen: ` + player2.choice;
     } else {
-        document.getElementById("p2Choice").innerHTML = `${player2.name} has not chosen yet.`
+        document.getElementById("p2choice").innerHTML = `${player2.name} has not chosen yet.`;
     }
-};
+}
 
 function updateScoreUI() {
     document.getElementById("round").innerHTML = game.roundCounter;
@@ -178,7 +176,7 @@ function updateScoreUI() {
     document.getElementById("p1score").innerHTML = player1.scoreCard.join("");
     document.getElementById("p2score").innerHTML = player2.scoreCard.join("");
     document.getElementById("best-of-three-winner").innerHTML = game.bestOfThreeWinner;
-};
+}
 
 function toggleNextRound() {
     if (nextRoundButtonAllowed === false) {
@@ -190,22 +188,22 @@ function toggleNextRound() {
         nextRoundButtonAllowed = false;
         document.getElementById("next-round").hidden = true;
         document.getElementById("next-round").disabled = true;
-    };
-};
+    }
+}
 
 function newRound() {
     toggleButtons();
     timerAllowed = true;
-    document.getElementById("p1Choice").innerHTML = "";
+    document.getElementById("p1choice").innerHTML = "";
     player1.choice = undefined;
-    document.getElementById("p2Choice").innerHTML = "";
+    document.getElementById("p2choice").innerHTML = "";
     player2.choice = undefined;
     document.getElementById("winner").innerHTML = "";
     game.winner = "";
     toggleNextRound();
     player1.scoreCard = [];
     player2.scoreCard = [];
-};
+}
 
 function reset() {
     if (game.roundCounter === 4) {
@@ -220,7 +218,7 @@ function reset() {
         game.roundWinner = [];
         updateScoreUI();
     }
-};
+}
 
 function bestOfThreeCalc() {
     if (game.roundCounter === 4) {
@@ -232,23 +230,23 @@ function bestOfThreeCalc() {
         if (player1.score === player2.score) {
             game.bestOfThreeWinner = "BEST OF THREE WINNER: DRAW!";
         } else if (player1.score > player2.score) {
-            game.bestOfThreeWinner = "BEST OF THREE WINNER: PLAYER 1!"
+            game.bestOfThreeWinner = "BEST OF THREE WINNER: PLAYER 1!";
         } else {
-            game.bestOfThreeWinner = "BEST OF THREE WINNER: PLAYER 2!"
-        };
+            game.bestOfThreeWinner = "BEST OF THREE WINNER: PLAYER 2!";
+        }
         updateScoreUI();
         updatePlayerUIChoices();
-    };
-};
+    }
+}
 
 function disableButtonsP2AI() {
     if (player2.name.toLocaleLowerCase().trim() === "computer") {
         let aiButtons = document.getElementsByClassName("p2button");
         for (let button of aiButtons) {
             button.disabled = true;
-        };
-    };
-};
+        }
+    }
+}
 
 function playAgainstAI() {
     let aiChoice = Math.floor(Math.random() * 5);
@@ -267,8 +265,8 @@ function playAgainstAI() {
             break;
             case 4:
                 player2.choice = "spock";
-            break
-        };
+            break;
+        }
         updatePlayerUIChoices();
-    };
+}
 

@@ -15,7 +15,7 @@
             Rock.Paper.Scissors.Lizard.Spock
         </h1>
         <h2 id="timer"></h2>
-        <h3>Seconds left</h3>
+        <h3 id="seconds-left">Seconds left</h3>
 
         <div id="round-counter">
 
@@ -25,7 +25,7 @@
         </div>
     </header>
 
-    <div>
+    <div class="player-container">
         <div class="player" id="player-1">
             <div class="player-score" id="p1score"></div>
             <h2 id="p1name">
@@ -43,11 +43,20 @@
                         class="fa-solid fa-hand-spock"></i></button>
             </div>
 
-            <div id="p1Choice">
+            <div id="p1choice">
 
             </div>
 
         </div>
+
+        <div id="winner">
+        </div>
+
+        <button type="button" id="next-round">NEXT ROUND</button>
+
+        <div id="best-of-three-winner">
+        </div>
+
         <div class="player" id="player-2">
             <div class="player-score" id="p2score"></div>
 
@@ -67,21 +76,11 @@
                         class="fa-solid fa-hand-spock"></i></button>
             </div>
 
-            <div id="p2Choice">
+            <div id="p2choice">
 
             </div>
         </div>
-
-        <div id="winner">
-        </div>
-
-        <button type="button" id="next-round">NEXT ROUND</button>
     </div>
-
-    <div id="best-of-three-winner">
-    </div>
-
-
 
     <script src="https://kit.fontawesome.com/ce66787713.js" crossorigin="anonymous"></script>
     <script src="./assets/javascript/scripts.js"></script>

@@ -186,7 +186,6 @@ h3 {
 
 .player-container {
     display: flex;
-    flex-wrap: wrap;
 }
 
 .player h2 {

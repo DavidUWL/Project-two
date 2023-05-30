@@ -15,7 +15,7 @@
 section {
     background-color: #15133c;
     width: 100vw;
-    height: 100vh;
+    height: 90vh;
 }
 
 #splash-title {
@@ -72,7 +72,29 @@ img {
     transition: 100ms ease;
 }
 
+.footer {
+    margin-top: auto;
+    background-color: #272269;
+    width: 100%;
+    text-align: center;
+}
+
+.socials a {
+    color: #73d9cf;
+    margin-right: 10px;
+    text-decoration: none;
+    font-size: 2em;
+}
+
+
 /* rules  */
+.container {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
 
 #header-container {
     width: 100%;
@@ -124,7 +146,7 @@ img {
     display: flex;
     justify-content: space-between;
     width: 90vw;
-    height: 20vh;
+    height: auto;
     font-size: 1vw;
     list-style-position: inside;
 }
@@ -157,9 +179,9 @@ img {
 }
 
 #play-computer-rules img {
-    width: fit-content;
-    height: fit-content;
-    border-radius: 10px;
+    min-width: 100%;
+    min-height: 100%;
+    border-radius: 40px;
 }
 
 /* GAME */
@@ -226,7 +248,7 @@ h3 {
     color: #73d9cf;
 }
 
-.player-choice >button > i {
+.player-choice>button>i {
     font-size: 4vh;
 }
 
@@ -320,7 +342,7 @@ h3 {
     /* splash page */
 
     #splash-title {
-        font-size: 1em;
+        font-size: 0.5em;
     }
 
     img {
@@ -339,8 +361,19 @@ h3 {
     /* game page */
 
     .player-container {
+        display: flex;
         flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
         width: 100%;
+    }
+
+    .player-choice > button > i {
+        font-size: 5vh;
+    }
+
+    #next-round {
+        font-size: 2em;
     }
 
     #p1name,
@@ -356,9 +389,23 @@ h3 {
         min-width: 50%;
     }
 
+    /* rules page */
+
+    #rules-div-container {
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .rules-div {
+        font-size:2.4em;
+        width: 75%;
+        margin: 2%;
+    }
+
 }
 
-@media only screen and (max-width: 769px) {
+@media only screen and (min-width: 768px) {
 
     /* splash page */
 
@@ -429,7 +476,7 @@ h3 {
     }
 }
 
-@media only screen and (max-width: 1025px) {
+@media only screen and (min-width: 1024px) {
 
     /* splash page */
 
@@ -501,8 +548,39 @@ h3 {
     }
 }
 
-@media only screen and (max-width: 1441px) {
-        
+@media only screen and (min-width: 1440px) {
 
-    
+    .player-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        height: auto;
+    }
+
+    .player {
+        height: auto;
+    }
+
+    #p1choice,
+    #p2choice {
+        text-align: center;
+        font-size: 2em;
+    }
+
+    #next-round {
+        height: auto;
+        width: auto;
+    }
+
+    #round-winner-div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #best-of-three-winner {
+        width: auto;
+        height: auto;
+    }
+
 }

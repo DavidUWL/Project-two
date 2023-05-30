@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <div class="container">
     <header>
         <h1 id="game-title">
             Rock.Paper.Scissors.Lizard.Spock
@@ -49,13 +50,18 @@
 
         </div>
 
-        <div id="winner">
+        <div id="round-winner-div">
+
+            <div id="winner">
+            </div>
+
+            <button type="button" id="next-round">NEXT ROUND</button>
+
+            <div id="best-of-three-winner">
+            </div>
+
         </div>
 
-        <button type="button" id="next-round">NEXT ROUND</button>
-
-        <div id="best-of-three-winner">
-        </div>
 
         <div class="player" id="player-2">
             <div class="player-score" id="p2score"></div>
@@ -82,6 +88,14 @@
         </div>
     </div>
 
+    <footer class="footer">
+        <div class="socials">
+            <a href="http:www.facebook.com"><i class="fab fa-facebook"></i></a>
+            <a href="http:www.twitter.com"><i class="fab fa-twitter"></i></a>
+            <a href="http:www.youtube.com"><i class="fab fa-youtube"></i></a>
+        </div>
+    </footer>
+</div>
     <script src="https://kit.fontawesome.com/ce66787713.js" crossorigin="anonymous"></script>
     <script src="./assets/javascript/scripts.js"></script>
 </body>

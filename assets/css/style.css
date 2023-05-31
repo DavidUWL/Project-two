@@ -20,7 +20,6 @@ section {
 
 #splash-title {
     position: relative;
-    top: 5%;
     width: auto;
     height: auto;
     text-align: center;
@@ -269,12 +268,10 @@ h3 {
 
 #player-1 {
     float: left;
-
 }
 
 #player-2 {
     float: right;
-
 }
 
 /*  round counter  */
@@ -345,9 +342,7 @@ h3 {
         font-size: 0.5em;
     }
 
-    img {
-        padding-top: 10%;
-    }
+
 
     #buttons-div {
         flex-direction: column;
@@ -356,6 +351,7 @@ h3 {
 
     .splash-buttons {
         height: 2.5em;
+        font-size: 6vh;
     }
 
     /* game page */
@@ -385,6 +381,8 @@ h3 {
         font-size: 2.7vh;
     }
 
+
+
     #best-of-three-winner {
         min-width: 50%;
     }
@@ -394,32 +392,32 @@ h3 {
     #rules-div-container {
         flex-direction: column;
         align-items: center;
+        width: 91vw;
+
 
     }
 
     .rules-div {
-        font-size:2.4em;
         width: 75%;
+        height: 22vw;
         margin: 2%;
+
+
+    }
+
+    .rules-div-header {
+        font-size: 2em;
+        padding-bottom: 1%;
     }
 
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (max-width: 769px) {
 
     /* splash page */
 
     #splash-title {
         font-size: 2em;
-    }
-
-    img {
-        padding-top: 10%;
-    }
-
-    #buttons-div {
-        flex-direction: column;
-        justify-content: space-between;
     }
 
     .splash-buttons {
@@ -428,9 +426,14 @@ h3 {
 
     /* game page */
 
+    #game-title {
+        font-size: 1em;
+    }
+
     .player-container {
         flex-direction: column;
         width: 100%;
+        align-items: center;
     }
 
     .player {
@@ -454,12 +457,14 @@ h3 {
         font-size: 2.7vh;
     }
 
+
     #best-of-three-winner {
         min-width: 50%;
         font-size: 2.5vh;
     }
 
     #winner {
+        height: auto;
         font-size: 3vh;
     }
 
@@ -474,6 +479,27 @@ h3 {
     #round-counter {
         font-size: 1.5vh;
     }
+
+    /* rules page */
+
+    #rules-div-container {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 0%;
+
+    }
+
+    .rules-div {
+        font-size: 2.4em;
+        width: 75%;
+        margin: 2%;
+    }
+
+    .rules-div-header {
+        font-size: 1em;
+        padding-bottom: 1%;
+    }
+
 }
 
 @media only screen and (min-width: 1024px) {
@@ -482,10 +508,6 @@ h3 {
 
     #splash-title {
         font-size: 2em;
-    }
-
-    img {
-        padding-top: 10%;
     }
 
     #buttons-div {
@@ -502,6 +524,7 @@ h3 {
         display: flex;
         flex-direction: column;
         width: 100%;
+        align-items: center;
     }
 
     .player {

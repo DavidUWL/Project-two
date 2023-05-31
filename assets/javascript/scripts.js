@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
     beginTimer();
 
     logPlayerChoice();
+
 });
 
 function promptPlayerName() {
@@ -203,6 +204,7 @@ function newRound() {
     toggleNextRound();
     player1.scoreCard = [];
     player2.scoreCard = [];
+    disableButtonsP2AI();
 }
 
 function reset() {

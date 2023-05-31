@@ -57,22 +57,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function promptPlayerName() {
     player1.name = window.prompt("player 1 Name:");
-    if (player1.name != "Player 1" || undefined) {
+    if (player1.name != null) {
        player1.name = player1.name.trim();
         document.getElementById("p1name").innerHTML = player1.name;
     } else {
-        player1.name = "Player 1";
+        player1.name = "player 1";
+        document.getElementById("p1name").innerHTML = player1.name;
     }
 
     player2.name = window.prompt("player 2 Name:");
-    if (player2.name != "Player 2" || undefined) {
+    if (player2.name != null) {
         player2.name = player2.name.trim();
         document.getElementById("p2name").innerHTML = player2.name;
+    } else {
+        player2.name = "Player 2";
+        document.getElementById("p2name").innerHTML = player2.name;
     }
-    else {
-    player2.name = "player 2";
-    }
+
+    console.log(player1.name,player2.name);
 }
+
 
 function logPlayerChoice() {
   for (let button of buttons) {
@@ -251,6 +255,8 @@ function disableButtonsP2AI() {
 }
 
 function playAgainstAI() {
+
+    if (!player2.choice) {
     let aiChoice = Math.floor(Math.random() * 5);
         switch (aiChoice) {
             case 0:
@@ -270,5 +276,6 @@ function playAgainstAI() {
             break;
         }
         updatePlayerUIChoices();
+    }
 }
 

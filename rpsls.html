@@ -11,91 +11,93 @@
 
 <body>
     <div class="container">
-    <header>
-        <h1 id="game-title">
-            Rock.Paper.Scissors.Lizard.Spock
-        </h1>
-        <h2 id="timer"></h2>
-        <h3 id="seconds-left">Seconds left</h3>
+        <header>
+            <h1 id="game-title">
+                Rock.Paper.Scissors.Lizard.Spock
+            </h1>
+            <h2 id="timer"></h2>
+            <h3 id="seconds-left">Seconds left</h3>
 
-        <div id="round-counter">
+            <div id="round-counter">
 
-            <div>ROUND</div>
-            <div id="round">1</div>
+                <div>ROUND</div>
+                <div id="round">1</div>
 
+            </div>
+        </header>
+
+        <div class="player-container">
+            <div class="player" id="player-1">
+                <div class="player-score" id="p1score"></div>
+                <h2 id="p1name">
+
+                </h2>
+                <div class="player-choice">
+                    <button type="button" class="buttons p1button" value="rock"><i
+                            class="fa-solid fa-hand-back-fist"></i></button>
+                    <button type="button" class="buttons p1button" value="paper"><i
+                            class="fa-solid fa-hand"></i></button>
+                    <button type="button" class="buttons p1button" value="scissors"><i
+                            class="fa-solid fa-hand-scissors"></i></button>
+                    <button type="button" class="buttons p1button" value="lizard"><i
+                            class="fa-solid fa-hand-lizard"></i></button>
+                    <button type="button" class="buttons p1button" value="spock"><i
+                            class="fa-solid fa-hand-spock"></i></button>
+                </div>
+
+                <div id="p1choice">
+
+                </div>
+
+            </div>
+
+            <div id="round-winner-div">
+
+                <div id="winner">
+                </div>
+
+                <button type="button" id="next-round">NEXT ROUND</button>
+
+                <div id="best-of-three-winner">
+                </div>
+
+            </div>
+
+
+            <div class="player" id="player-2">
+                <div class="player-score" id="p2score"></div>
+
+                <h2 id="p2name">
+
+                </h2>
+
+                <div class="player-choice">
+                    <button type="button" class="buttons p2button" value="rock"><i
+                            class="fa-solid fa-hand-back-fist"></i></button>
+                    <button type="button" class="buttons p2button" value="paper"><i
+                            class="fa-solid fa-hand"></i></button>
+                    <button type="button" class="buttons p2button" value="scissors"><i
+                            class="fa-solid fa-hand-scissors"></i></button>
+                    <button type="button" class="buttons p2button" value="lizard"><i
+                            class="fa-solid fa-hand-lizard"></i></button>
+                    <button type="button" class="buttons p2button" value="spock"><i
+                            class="fa-solid fa-hand-spock"></i></button>
+                </div>
+
+                <div id="p2choice">
+
+                </div>
+            </div>
         </div>
-    </header>
 
-    <div class="player-container">
-        <div class="player" id="player-1">
-            <div class="player-score" id="p1score"></div>
-            <h2 id="p1name">
-
-            </h2>
-            <div class="player-choice">
-                <button type="button" class="buttons p1button" value="rock"><i
-                        class="fa-solid fa-hand-back-fist"></i></button>
-                <button type="button" class="buttons p1button" value="paper"><i class="fa-solid fa-hand"></i></button>
-                <button type="button" class="buttons p1button" value="scissors"><i
-                        class="fa-solid fa-hand-scissors"></i></button>
-                <button type="button" class="buttons p1button" value="lizard"><i
-                        class="fa-solid fa-hand-lizard"></i></button>
-                <button type="button" class="buttons p1button" value="spock"><i
-                        class="fa-solid fa-hand-spock"></i></button>
+        <footer class="footer">
+            <div class="socials">
+                <a href="http://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="http://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="http://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
             </div>
-
-            <div id="p1choice">
-
-            </div>
-
-        </div>
-
-        <div id="round-winner-div">
-
-            <div id="winner">
-            </div>
-
-            <button type="button" id="next-round">NEXT ROUND</button>
-
-            <div id="best-of-three-winner">
-            </div>
-
-        </div>
-
-
-        <div class="player" id="player-2">
-            <div class="player-score" id="p2score"></div>
-
-            <h2 id="p2name">
-
-            </h2>
-
-            <div class="player-choice">
-                <button type="button" class="buttons p2button" value="rock"><i
-                        class="fa-solid fa-hand-back-fist"></i></button>
-                <button type="button" class="buttons p2button" value="paper"><i class="fa-solid fa-hand"></i></button>
-                <button type="button" class="buttons p2button" value="scissors"><i
-                        class="fa-solid fa-hand-scissors"></i></button>
-                <button type="button" class="buttons p2button" value="lizard"><i
-                        class="fa-solid fa-hand-lizard"></i></button>
-                <button type="button" class="buttons p2button" value="spock"><i
-                        class="fa-solid fa-hand-spock"></i></button>
-            </div>
-
-            <div id="p2choice">
-
-            </div>
-        </div>
+        </footer>
     </div>
-
-    <footer class="footer">
-        <div class="socials">
-            <a href="http:www.facebook.com"><i class="fab fa-facebook"></i></a>
-            <a href="http:www.twitter.com"><i class="fab fa-twitter"></i></a>
-            <a href="http:www.youtube.com"><i class="fab fa-youtube"></i></a>
-        </div>
-    </footer>
-</div>
     <script src="https://kit.fontawesome.com/ce66787713.js" crossorigin="anonymous"></script>
     <script src="./assets/javascript/scripts.js"></script>
 </body>

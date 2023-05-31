@@ -1,14 +1,14 @@
 // players
 
 const player1 = {
-    name: "Player 1",
+    name: "",
     score: 0,
     scoreCard: [],
     choice: "",
 };
 
 const player2 = {
-    name: "Player 2",
+    name: "",
     score: 0,
     scoreCard: [],
     choice: "",
@@ -73,8 +73,6 @@ function promptPlayerName() {
         player2.name = "Player 2";
         document.getElementById("p2name").innerHTML = player2.name;
     }
-
-    console.log(player1.name,player2.name);
 }
 
 

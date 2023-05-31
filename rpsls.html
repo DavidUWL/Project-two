@@ -11,6 +11,7 @@
 
 <body>
     <div class="container">
+        <!-- flex container for all main elements -->
         <header>
             <h1 id="game-title">
                 Rock.Paper.Scissors.Lizard.Spock
@@ -21,18 +22,20 @@
             <div id="round-counter">
 
                 <div>ROUND</div>
-                <div id="round">1</div>
+                <div id="round">1</div> <!-- counts each round as the game progresses -->
 
             </div>
         </header>
 
         <div class="player-container">
+            <!-- container for both player sections -->
             <div class="player" id="player-1">
                 <div class="player-score" id="p1score"></div>
                 <h2 id="p1name">
-
+                    <!-- player prompted for name on dom load -->
                 </h2>
                 <div class="player-choice">
+                    <!-- player 1 choice buttons -->
                     <button type="button" class="buttons p1button" value="rock"><i
                             class="fa-solid fa-hand-back-fist"></i></button>
                     <button type="button" class="buttons p1button" value="paper"><i
@@ -46,21 +49,22 @@
                 </div>
 
                 <div id="p1choice">
-
+                    <!-- logs the players choice from whatever button they click -->
                 </div>
 
             </div>
 
             <div id="round-winner-div">
-
+                <!-- container for end of round button/displays -->
                 <div id="winner">
+                    <!-- logs the game winner -->
                 </div>
 
                 <button type="button" id="next-round">NEXT ROUND</button>
-
+                <!-- next round button appears when round over-->
                 <div id="best-of-three-winner">
+                    <!-- logs the game winner -->
                 </div>
-
             </div>
 
 
@@ -68,10 +72,11 @@
                 <div class="player-score" id="p2score"></div>
 
                 <h2 id="p2name">
-
+                    <!-- player prompted for name on dom load -->
                 </h2>
 
                 <div class="player-choice">
+                    <!-- player 2 choice buttons -->
                     <button type="button" class="buttons p2button" value="rock"><i
                             class="fa-solid fa-hand-back-fist"></i></button>
                     <button type="button" class="buttons p2button" value="paper"><i
@@ -85,19 +90,19 @@
                 </div>
 
                 <div id="p2choice">
-
+                    <!-- logs the players choice from whatever button they click -->
                 </div>
             </div>
         </div>
 
-        <footer class="footer">
+        <footer class="footer"> <!-- footer for socials -->
             <div class="socials">
                 <a href="http://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
                 <a href="http://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
                 <a href="http://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
             </div>
         </footer>
-    </div>
+    </div> <!--javascript import and font awesome import-->
     <script src="https://kit.fontawesome.com/ce66787713.js" crossorigin="anonymous"></script>
     <script src="./assets/javascript/scripts.js"></script>
 </body>

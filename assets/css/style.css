@@ -71,13 +71,13 @@ img {
 }
 
 .footer {
-    margin-top: auto;
-    background-color: #272269;
-    width: 100%;
+    margin-top: auto;/* the use of flex box on a full page container and its 100VH/90VH value paired with margin-top: auto; */
+    background-color: #272269; /* attributed to this stack overflow answer by aleks G */
+    width: 100%;                 /* https://stackoverflow.com/a/66565163 */ 
     text-align: center;
 }
 
-.socials a {
+.socials a { 
     color: #73d9cf;
     margin-right: 10px;
     text-decoration: none;
@@ -86,7 +86,7 @@ img {
 
 
 /* rules  */
-.container {
+.container { 
     display: flex;
     min-height: 100vh;
     flex-direction: column;

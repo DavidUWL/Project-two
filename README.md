@@ -77,7 +77,7 @@ The rules page contains a navigation bar.
   * The Rules page, similiar to the home page is kept quite minimal. A quick explanation of how to play and how the winner is decided and any extra features are described, this allows the player to quickly get into the game without having to spend too long reading, this keeps the user on the site before they become bored. 
   * The rules page explains one key feature accompanied by an image describing how the player can play against the computer instead of another player. 
 
-* Game Page
+* Game Page <br>
 The Game page in keeping style with the minimalist look, allows the player to focus on just the game and not be distracted by the webpage or browser. The below outlines the features of the game page.
   ![picture of game page](assets/images/readme-images/game-page.png)
   1. timer: Upon first click for either player one or player two, the round timer will begin to count down to 0. when the timer hits 0, the winner will be calculated.
@@ -126,7 +126,7 @@ function promptPlayerName() {
 } 
 ```
 
-* The below code determines the name of player 2 and if it is computer, it disables the buttons for player 2. Once the timer hits zero, it triggers a function that generates a random number between zero and four which is mapped to a choice for player 2. It also becomes case insensative with the toLocaleLowerCase() method and removes whitespace with the trim() method if they accidentally add a space at the end. 
+* The below code determines the name of player 2 and if it is computer, it disables the buttons for player 2. Once the timer hits zero, it triggers a function that generates a random number between zero and four which is mapped to a choice for player 2. It also becomes case insensitive with the toLocaleLowerCase() method and removes whitespace with the trim() method if they accidentally add a space at the end. 
 
 ```javascript 
 function disableButtonsP2AI() {
@@ -272,7 +272,8 @@ All content on this site was written by myself for the game RPSLS.
 ## Media
 All images on this site were used with the permission of the owners/people involved. 
 
-[Akshay bahadur image](https://static.wixstatic.com/media/903056_39aa9523c70a428684be9744580b0b1b~mv2.png/v1/fill/w_844,h_844,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/903056_39aa9523c70a428684be9744580b0b1b~mv2.png) ![usage request](./assets/images/readme-images/akshay-credit.png)<br>
+[Akshay bahadur image](https://static.wixstatic.com/media/903056_39aa9523c70a428684be9744580b0b1b~mv2.png/v1/fill/w_844,h_844,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/903056_39aa9523c70a428684be9744580b0b1b~mv2.png) <br>
+ ![usage request](./assets/images/readme-images/akshay-credit.png)<br>
  
 
 ## Acknowledgments

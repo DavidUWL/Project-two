@@ -56,9 +56,10 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function promptPlayerName() {
+    /* window prompt taking player names, if empty assigns default names */
     player1.name = window.prompt("player 1 Name:");
     if (player1.name != null) {
-       player1.name = player1.name.trim();
+        player1.name = player1.name.trim();
         document.getElementById("p1name").innerHTML = player1.name;
     } else {
         player1.name = "player 1";
@@ -77,23 +78,25 @@ function promptPlayerName() {
 
 
 function logPlayerChoice() {
-  for (let button of buttons) {
-    button.addEventListener("click", function() {
-      if (this.classList.contains("p1button")) {
-        let p1Choice = this.getAttribute("value");
-        player1.choice = p1Choice;
-        updatePlayerUIChoices();
-      } else {
-        let p2Choice = this.getAttribute("value");
-        player2.choice = p2Choice;
-        updatePlayerUIChoices();
-      }
-    });
+    /* takes the user chosen button click and logs it in the players respective div with updapePlayerUIChoices */
+    for (let button of buttons) {
+        button.addEventListener("click", function () {
+            if (this.classList.contains("p1button")) {
+                let p1Choice = this.getAttribute("value");
+                player1.choice = p1Choice;
+                updatePlayerUIChoices();
+            } else {
+                let p2Choice = this.getAttribute("value");
+                player2.choice = p2Choice;
+                updatePlayerUIChoices();
+            }
+        });
 
-  }
+    }
 }
 
 function beginTimer() {
+    /* begins timer countdown and triggers win logic/score logic and allows player to start next round */
     disableButtonsP2AI();
     for (let button of buttons) {
         button.addEventListener("click", function beginTimerCount() {
@@ -120,11 +123,13 @@ function beginTimer() {
 }
 
 function toggleButtons() {
+    /* toggle function that disables and enables the buttons depending on game state */
     for (let button of buttons) button.disabled = buttonsAllowed;
     buttonsAllowed = !(buttonsAllowed);
 }
 
 function winConditions() {
+    /* win conditions logic for determining winner */
     if (player1.choice === player2.choice) {
         game.winner = "DRAW";
         game.roundCounter++;
@@ -145,6 +150,7 @@ function winConditions() {
 }
 
 function getScoreCard() {
+    /* roundwinner is pushed to array, functions reads that and updates players scores */
     game.roundWinner.forEach(element => {
         if (element === 1) {
             player1.scoreCard.push("✓");
@@ -160,8 +166,9 @@ function getScoreCard() {
 }
 
 function updatePlayerUIChoices() {
+    /* logs the player choice */
     if (player1.choice) {
-        document.getElementById("p1choice").innerHTML =`${player1.name} has chosen: ` + player1.choice;
+        document.getElementById("p1choice").innerHTML = `${player1.name} has chosen: ` + player1.choice;
     } else {
         document.getElementById("p1choice").innerHTML = `${player1.name} has not chosen yet.`;
     }
@@ -174,6 +181,7 @@ function updatePlayerUIChoices() {
 }
 
 function updateScoreUI() {
+    /* updates all game score values */
     document.getElementById("round").innerHTML = game.roundCounter;
     document.getElementById("winner").innerHTML = game.winner;
     document.getElementById("p1score").innerHTML = player1.scoreCard.join("");
@@ -182,6 +190,7 @@ function updateScoreUI() {
 }
 
 function toggleNextRound() {
+    /* toggle function that hides or unhides the next round button */
     if (nextRoundButtonAllowed === false) {
         nextRoundButtonAllowed = true;
         document.getElementById("next-round").hidden = false;
@@ -195,6 +204,7 @@ function toggleNextRound() {
 }
 
 function newRound() {
+    /* clears any game state that isnt required for score or round */
     toggleButtons();
     timerAllowed = true;
     document.getElementById("p1choice").innerHTML = "";
@@ -210,6 +220,7 @@ function newRound() {
 }
 
 function reset() {
+    /* reset function that resets all values to default */
     if (game.roundCounter === 4) {
         game.roundCounter = 1;
         document.getElementById("round").innerHTML = game.roundCounter;
@@ -225,6 +236,7 @@ function reset() {
 }
 
 function bestOfThreeCalc() {
+    /* overall game winner calc function */
     if (game.roundCounter === 4) {
         document.getElementById("best-of-three-winner").hidden = false;
         document.getElementById("next-round").innerHTML = "RESET";
@@ -244,6 +256,7 @@ function bestOfThreeCalc() {
 }
 
 function disableButtonsP2AI() {
+    /* disables the buttons of player 2 if they are playing against computer */
     if (player2.name.toLocaleLowerCase().trim() === "computer") {
         let aiButtons = document.getElementsByClassName("p2button");
         for (let button of aiButtons) {
@@ -253,27 +266,27 @@ function disableButtonsP2AI() {
 }
 
 function playAgainstAI() {
+    /* if playing against computer, logic will determine the choice of computer */
 
     if (!player2.choice) {
-    let aiChoice = Math.floor(Math.random() * 5);
+        let aiChoice = Math.floor(Math.random() * 5);
         switch (aiChoice) {
             case 0:
                 player2.choice = "rock";
-            break;
+                break;
             case 1:
                 player2.choice = "paper";
-            break;
+                break;
             case 2:
                 player2.choice = "scissors";
-            break;
+                break;
             case 3:
                 player2.choice = "lizard";
-            break;
+                break;
             case 4:
                 player2.choice = "spock";
-            break;
+                break;
         }
         updatePlayerUIChoices();
     }
 }
-

@@ -272,7 +272,7 @@ All content on this site was written by myself for the game RPSLS.
 ## Media
 All images on this site were used with the permission of the owners/people involved. 
 
-[Akshay bahadur image credit](https://static.wixstatic.com/media/903056_39aa9523c70a428684be9744580b0b1b~mv2.png/v1/fill/w_844,h_844,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/903056_39aa9523c70a428684be9744580b0b1b~mv2.png)<br>
+[Akshay bahadur image](https://static.wixstatic.com/media/903056_39aa9523c70a428684be9744580b0b1b~mv2.png/v1/fill/w_844,h_844,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/903056_39aa9523c70a428684be9744580b0b1b~mv2.png) ![usage request](./assets/images/readme-images/akshay-credit.png)<br>
  
 
 ## Acknowledgments
